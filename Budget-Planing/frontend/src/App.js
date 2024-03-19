@@ -7,6 +7,9 @@ import Budgets from './components/Budget-Planning/Budget/Budgets';
 import PostHome from './components/Add-Post/Post/PostHome';
 import AddPost from './components/Add-Post/Add Post/AddPost';
 import Posts from './components/Add-Post/Post/Posts';
+import DriveShare from './components/Add-Drive/Drive/DirveShareHome';
+import AddDrive from './components/Add-Drive/Add Drive/AddDrive';
+import MyDrives from './components/Add-Drive/Drive/Drives';
 
 function App() {
   return (
@@ -22,6 +25,12 @@ function App() {
           <Route exact path="/postHome" element={<PostHome />} />
           <Route exact path="/addpost" element={<AddPost />} />
           <Route exact path="/posts" element={<Posts />} />
+
+          {/* Drive Routes */}
+          <Route exact path="/driveshare" element={<DriveShare />} />
+          <Route exact path="/adddrive" element={<AddDrive />} />
+          <Route exact path="/mydrives" element={<MyDrives />} />
+
         </Routes>
       </Router>
     </div>

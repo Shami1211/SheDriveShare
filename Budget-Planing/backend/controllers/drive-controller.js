@@ -1,56 +1,51 @@
-const   Drive = require("../model/Drive");
+const Drive = require("../model/Drive");
 
 const getAllDrives = async (req, res, next) => {
-  let drives;
   try {
-    drives = await Post.find();
+    const drives = await Drive.find();
+    if (!drives || drives.length === 0) {
+      return res.status(404).json({ message: "No drives found" });
+    }
+    return res.status(200).json({ drives });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Error fetching drives" });
   }
-
-  if (!drives) {
-    return res.status(404).json({ message: "No posts found" });
-  }
-  return res.status(202).json({ drives });
 };
 
 const getById = async (req, res, next) => {
   const id = req.params.id;
-  let drive;
   try {
-    drive = await Drive.findById(id);
+    const drive = await Drive.findById(id);
+    if (!drive) {
+      return res.status(404).json({ message: "No drive found" });
+    }
+    return res.status(200).json({ drive });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Error fetching drive" });
   }
-  if (!drive) {
-    return res.status(404).json({ message: "No drive found" });
-  }
-  return res.status(200).json({ drive });
 };
 
 const addDrive = async (req, res, next) => {
   const { name, date, start, destination, time, type, number, note } = req.body;
-  let drive;
   try {
-    post = new Post({
-        name,
-        date,
-        start,
-        destination,
-        time,
-        type,
-        number,
-        note
+    const drive = new Drive({
+      name,
+      date,
+      start,
+      destination,
+      time,
+      type,
+      number,
+      note
     });
     await drive.save();
+    return res.status(201).json({ drive });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ message: "Error adding drive" });
   }
-
-  if (!drive) {
-    return res.status(500).json({ message: "Unable to add post" });
-  }
-  return res.status(201).json({ drive });
 };
 
 module.exports = {
