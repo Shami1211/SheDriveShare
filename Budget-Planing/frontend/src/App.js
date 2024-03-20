@@ -10,6 +10,10 @@ import Posts from './components/Add-Post/Post/Posts';
 import DriveShare from './components/Add-Drive/Drive/DirveShareHome';
 import AddDrive from './components/Add-Drive/Add Drive/AddDrive';
 import MyDrives from './components/Add-Drive/Drive/Drives';
+import AddDiscount from './components/Admin-Discount/Add Discount/AddDiscount';
+import Discounts from './components/Admin-Discount/Discount/Discounts';
+import DisHome from './components/Admin-Discount/Discount/DiscountDash';
+
 
 function App() {
   return (
@@ -30,6 +34,12 @@ function App() {
           <Route exact path="/driveshare" element={<DriveShare />} />
           <Route exact path="/adddrive" element={<AddDrive />} />
           <Route exact path="/mydrives" element={<MyDrives />} />
+
+          {/* Discount Routes */}
+          <Route exact path="/dishome" element={<DisHome />} />
+          <Route exact path="/adddiscount" element={<AddDiscount />} />
+          <Route exact path="/discounts" element={<Discounts />} />
+
 
         </Routes>
       </Router>
