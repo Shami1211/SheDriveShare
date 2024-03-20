@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Discount = (props) => {
-  const { _id, image, name, company, price, discount, total, start, end } = props.drive;
+  const { _id, image, name, company, price, discount, total, start, end } = props.discount;
 
   return (
     <div>
